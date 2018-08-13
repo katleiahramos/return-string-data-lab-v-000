@@ -21,6 +21,7 @@ RSpec.describe ProductsController, type: :controller do
       p1 = Product.create(@product_attributes)
       p2 = Product.create(name: "No Inventory", inventory: 0)
       get :inventory, id: p1.id
+      binding.pry
       expect(response.body).to eq "true"
       get :inventory, id: p2.id
       expect(response.body).to eq "false"
